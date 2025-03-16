@@ -1,10 +1,4 @@
 class ChallengesController < ApplicationController
-
-  def time_preferences
-    @user = User.new
-  end
-
-  def category_preferences
-    @user = User.new
+  def preferences
   end
 end
