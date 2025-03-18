@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'challenge/index'
   get 'challenge/show'
   get 'challenge/new'
   get 'challenge/edit'
@@ -7,6 +6,6 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get "up" => "rails/health#show", as: :rails_health_check
-  resources :challenges, only: [:index, :show, :new, :edit]
+  resources :challenges, only: [:show, :new, :edit]
   # get "show", to: "challenge#show"
 end
