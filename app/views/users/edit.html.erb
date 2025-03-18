@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="text-center my-3">
+    Welcome, <%= current_user.first_name %>
+    <h1>Goals</h1>
+    <h1><i class="fa-solid fa-bullseye"></i></h1>
+  </div>
+
+  <%= render "shared/form_preferences", user: @user %>
+
+</div>

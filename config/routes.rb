@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get "up" => "rails/health#show", as: :rails_health_check
-  resources :challenges, only: [:index, :show, :new, :edit]
-  # get "show", to: "challenge#show"
+  resources :challenges, only: [:show, :new, :edit]
+  get 'users/:id/preferences', to: 'users#edit', as: 'preferences'
+  resources :users
 end

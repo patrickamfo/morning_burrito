@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :user_challenges
   has_many :challenges, through: :user_challenges
-  validates :length_preference, inclusion: { in: [6, 14, 32] }
-  validates :category_preference, inclusion: { in: ["Crafting","Creative Writing","Creative Lesson"] }
+  validates :length_preference, inclusion: { in: [6, 14, 32], allow_blank: true }
+  validates :category_preference, inclusion: { in: ["Crafting", "Creative Writing", "Creative Lesson"], allow_blank: true }
   validates :first_name, presence: true
 end
