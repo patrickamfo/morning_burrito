@@ -1,11 +1,7 @@
-<div class="container">
-  <div class="d-flex row">
-
-  </div>
-
-  <div class="d-flex row">
-    <%= @challenge.name %>
-  </div>
-
-
-</div>
+<h1>Your Creative Boost is Served</h1>
+<h2>We love a good <%=@challenge.name%></h2>
+<h3>Description</h3>
+<%=@challenge.description %>
+<p>Most favourited challenge this week</p>
+<p>This challenge has been completed by your friend NAME</p>
+<%= link_to "Time to Create!" _path%>
