@@ -6,10 +6,16 @@ export default class extends Controller {
 
   loadCategory() {
     this.categoryTarget.classList.remove("d-none");
+    this.categoryTarget.scrollIntoView();
     this.taglineTarget.innerText = "What's your vibe? Pick your challenge type!"
+  }
+
+  categoryIntoView() {
+    this.categoryTarget.scrollIntoView();
   }
 
   loadUpdate() {
     this.updateTarget.classList.remove("d-none");
+    this.updateTarget.scrollIntoView();
   }
 }
