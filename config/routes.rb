@@ -4,5 +4,9 @@ Rails.application.routes.draw do
 
   get "up" => "rails/health#show", as: :rails_health_check
   resources :challenges, only: [:show, :new, :edit]
-  resources :users
+  resources :users do
+    member do
+      get "category-preference"
+    end
+  end
 end

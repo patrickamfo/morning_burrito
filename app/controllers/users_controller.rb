@@ -3,6 +3,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def category_preference
+    @user = User.find(params[:id])
+  end
+
   def update
     user = User.find(params[:id])
     user.update!(user_params)

@@ -1,58 +1,38 @@
 <%= bootstrap_form_for(@user) do |f| %>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="card my-2">
-        <div class="card-body">
-          <h3>
-          <%= f.form_group :category_preference, label: { text: "What type of creative challenges would you like?" } do %>
-            <%= f.radio_button :category_preference, "Crafting", label: "Crafting", inline: true %>
-            <%= f.radio_button :category_preference, "Creative Writing", label: "Creative Writing", inline: true %>
-            <%= f.radio_button :category_preference, "Creative Lesson", label: "Creative Lesson", inline: true %>
-          <% end %>
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="btnradio1">Crafting</label>
+  <div data-controller="preferences">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card my-2">
+          <div class="card-body">
+            <h3>
+              <%= f.form_group :length_preference, label: { text: "What type of creative challenges would you like?" } do %>
+              <%= f.radio_button :length_preference, 6, label: "6 minutes" %>
+              <%= f.radio_button :length_preference, 14, label: "14 minutes" %>
+              <%= f.radio_button :length_preference, 32, label: "32 minutes" %>
+            <% end %>
+            </h3>
+          </div>
+          <span class="text-center" data-action="click->preferences#loadCategory"><h1><i class="fa-solid fa-circle-check"></i></h1></span>
+        </div>
+      </div>
 
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio2">Creative Writing</label>
-
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio3">Creative Lesson</label>
-          </h3>
+      <div class="col-sm-6 d-none" data-preferences-target="category">
+        <div class="card my-2">
+          <div class="card-body">
+            <h3>
+            <%= f.form_group :category_preference, label: { text: "What type of creative challenges would you like?" } do %>
+              <%= f.radio_button :category_preference, "Crafting", label: "Crafting" %>
+              <%= f.radio_button :category_preference, "Creative Writing", label: "Creative Writing" %>
+              <%= f.radio_button :category_preference, "Creative Lesson", label: "Creative Lesson" %>
+            <% end %>
+            </h3>
+          </div>
+          <span class="text-center" data-action="click->preferences#loadUpdate"><h1><i class="fa-solid fa-circle-check"></i></h1></span>
         </div>
       </div>
     </div>
-
-    <div class="col-sm-6">
-      <div class="card my-2">
-        <div class="card-body">
-          <h3>
-           <%= f.form_group :length_preference, label: { text: "What type of creative challenges would you like?" } do %>
-            <%= f.radio_button :length_preference, 6, label: "6 minutes", inline: true %>
-            <%= f.radio_button :length_preference, 14, label: "14 minutes", inline: true %>
-            <%= f.radio_button :length_preference, 32, label: "32 minutes", inline: true %>
-          <% end %>
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="btnradio1">Crafting</label>
-
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio2">Creative Writing</label>
-
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio3">Creative Lesson</label>
-          </h3>
-        </div>
-      </div>
+    <div class="text-center d-none" data-preferences-target="update">
+      <%= f.submit "User Update", class: "btn btn-primary" %>
     </div>
   </div>
-  <%= f.submit "User Update" %>
 <% end %>
-
-<%# <%=# f.input :category_preference, as: :radio_buttons, %>
-              <%# :label => "What type of creative challenges would you like?",
-              :collection => ["Crafting", "Creative Writing", "Creative Lesson"],
-              item_wrapper_class: 'test',
-             <%# :selected => "Crafting" %>
-             <%# <%= f.input :length_preference, as: :radio_buttons,
-              :label => "How long can you can spend on your daily challenges?",
-              :collection => [6, 14, 32], :selected => "Crafting" %>
-               <%# <%= f.button :submit, class: "btn btn-primary my-3" %>
