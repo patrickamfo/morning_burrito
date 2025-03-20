@@ -1,15 +1,39 @@
 <%= bootstrap_form_for(@user) do |f| %>
-  <div data-controller="preferences">
+  <div>
     <div class="row">
       <div class="col-sm-6">
         <div class="card my-2">
-          <div class="card-body">
-            <h3>
-              <%= f.form_group :length_preference, label: { text: "What type of creative challenges would you like?" } do %>
-              <%= f.radio_button :length_preference, 6, label: "6 minutes" %>
-              <%= f.radio_button :length_preference, 14, label: "14 minutes" %>
-              <%= f.radio_button :length_preference, 32, label: "32 minutes" %>
-            <% end %>
+          <div class="card-body text-center">
+            <h3 class="d-grid gap-4">
+              <input type="radio" class="btn-check" name="user[length_preference]" value="6 minutes" id="6-minutes" autocomplete="off">
+              <label class="btn btn-outline-secondary rounded-3 d-flex justify-content-between align-items-center" for="6-minutes">
+                <i class="fa-solid fa-hourglass-half fa-4x text-dark" id="form-icon"></i>
+                <div class="text-start">
+                  <strong style="color: black;">6 minutes<br></strong>
+                  Lorem Ipsum is simply <br>dummy text of the printing <br>and typesetting industry
+                </div>
+                <div></div>
+              </label>
+
+              <input type="radio" class="btn-check" name="user[length_preference]" value="14 minutes" id="14-minutes" autocomplete="off">
+              <label class="btn btn-outline-secondary rounded-3 d-flex justify-content-between align-items-center" for="14-minutes">
+                <i class="fa-solid fa-hourglass-half fa-4x text-dark" id="form-icon"></i>
+                <div class="text-start">
+                  <strong style="color: black;">14 minutes<br></strong>
+                  Lorem Ipsum is simply <br>dummy text of the printing <br>and typesetting industry
+                </div>
+                <div></div>
+              </label>
+
+              <input type="radio" class="btn-check" name="user[length_preference]" value="32 minutes" id="32-minutes" autocomplete="off">
+              <label class="btn btn-outline-secondary rounded-3 d-flex justify-content-between align-items-center" for="32-minutes">
+                <i class="fa-solid fa-hourglass-half fa-4x text-dark" id="form-icon"></i>
+                <div class="text-start">
+                  <strong style="color: black;">32 minutes<br></strong>
+                  Lorem Ipsum is simply <br>dummy text of the printing <br>and typesetting industry
+                </div>
+                <div></div>
+              </label>
             </h3>
           </div>
           <span class="text-center" data-action="click->preferences#loadCategory"><h1><i class="fa-solid fa-circle-check"></i></h1></span>
@@ -18,21 +42,45 @@
 
       <div class="col-sm-6 d-none" data-preferences-target="category">
         <div class="card my-2">
-          <div class="card-body">
-            <h3>
-            <%= f.form_group :category_preference, label: { text: "What type of creative challenges would you like?" } do %>
-              <%= f.radio_button :category_preference, "Crafting", label: "Crafting" %>
-              <%= f.radio_button :category_preference, "Creative Writing", label: "Creative Writing" %>
-              <%= f.radio_button :category_preference, "Creative Lesson", label: "Creative Lesson" %>
-            <% end %>
+          <div class="card-body text-center">
+            <h3 class="d-grid gap-4">
+              <input type="radio" class="btn-check" name="user[category_preference]" value="Crafting" id="crafting" autocomplete="off">
+              <label class="btn btn-outline-secondary rounded-3 d-flex justify-content-between align-items-center" for="crafting">
+                <i class="fa-solid fa-paintbrush fa-4x text-dark" id="form-icon"></i>
+                <div class="text-start">
+                  <strong style="color: black;">Crafting<br></strong>
+                  Lorem Ipsum is simply <br>dummy text of the printing <br>and typesetting industry
+                </div>
+                <div></div>
+              </label>
+
+              <input type="radio" class="btn-check" name="user[category_preference]" value="Creative Writing" id="creative-writing" autocomplete="off">
+              <label class="btn btn-outline-secondary rounded-3 d-flex justify-content-between align-items-center" for="creative-writing">
+                <i class="fa-solid fa-book-open fa-4x text-dark" id="form-icon"></i>
+                <div class="text-start">
+                  <strong style="color: black;">Creative Writing<br></strong>
+                  Lorem Ipsum is simply <br>dummy text of the printing <br>and typesetting industry
+                </div>
+                <div></div>
+              </label>
+
+              <input type="radio" class="btn-check" name="user[category_preference]" value="Creative Lesson" id="creative-lesson" autocomplete="off">
+              <label class="btn btn-outline-secondary rounded-3 d-flex justify-content-between align-items-center" for="creative-lesson">
+                <i class="fa-solid fa-circle-play fa-4x text-dark" id="form-icon"></i>
+                <div class="text-start">
+                  <strong style="color: black;">Creative Lesson<br></strong>
+                  Lorem Ipsum is simply <br>dummy text of the printing <br>and typesetting industry
+                  </div>
+                <div></div>
+              </label>
             </h3>
           </div>
           <span class="text-center" data-action="click->preferences#loadUpdate"><h1><i class="fa-solid fa-circle-check"></i></h1></span>
         </div>
       </div>
     </div>
-    <div class="text-center d-none" data-preferences-target="update">
-      <%= f.submit "User Update", class: "btn btn-primary" %>
+    <div class="text-center my-1 d-none" data-preferences-target="update">
+      <%= f.submit "Update my preferences", class: "btn btn-primary" %>
     </div>
   </div>
 <% end %>
