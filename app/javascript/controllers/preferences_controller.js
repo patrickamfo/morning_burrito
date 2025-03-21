@@ -13,7 +13,6 @@ export default class extends Controller {
     const category = this.categoryTarget;
     category.classList.add("visible");
     category.scrollIntoView();
-    this.taglineTarget.innerText = "What's your vibe? Pick your challenge type!";
   }
 
   categoryIntoView() {
