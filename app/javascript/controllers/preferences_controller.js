@@ -2,29 +2,31 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="preferences"
 export default class extends Controller {
-  static targets = [ "length", "category", "update", "tagline" ];
+  static targets = [ "length", "category", "lengthTick", "categoryTick", "update", "tagline" ];
 
-  // connect() {
-  //   this.lengthTarget.classList.add('animation: fadeInOut 4s linear forwards;');
-  // }
+  showLengthButton() {
+    this.lengthTickTarget.classList.add("visible");
+    this.taglineTarget.innerText = "Fit this challenge into your routine and set the right time for you!"
+  }
 
   loadCategory() {
-    this.categoryTarget.classList.remove("d-none");
-    this.categoryTarget.opacity = 0;
-    this.categoryTarget.scrollIntoView();
+    const category = this.categoryTarget;
+    category.classList.add("visible");
+    category.scrollIntoView();
     this.taglineTarget.innerText = "What's your vibe? Pick your challenge type!";
   }
 
   categoryIntoView() {
     this.categoryTarget.scrollIntoView();
+    this.categoryTickTarget.classList.add("visible");
   }
 
   toggleLengthText() {
-    this.taglineTarget.innerText = "Fit this challenge into your routine and set the right time for you!"
   }
 
   loadUpdate() {
-    this.updateTarget.classList.remove("d-none");
-    this.updateTarget.scrollIntoView();
+    let update = this.updateTarget;
+    update.classList.add("visible");
+    update.scrollIntoView();
   }
 }
