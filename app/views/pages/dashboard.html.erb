@@ -1,0 +1,8 @@
+<div class="d-flex flex-column align-items-center">
+    <% @completed_challenges.each do |challenge| %>
+      <div class="card text-bg-primary my-3 rounded-5" style="width: 18rem;">
+        <div class="card-header"><%= @challenges.find(challenge.challenge_id).name %></div>
+        <div class="card-body"></div>
+      </div>
+    <% end %>
+  </div>
