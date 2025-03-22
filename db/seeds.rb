@@ -10,7 +10,11 @@
 
 require_relative "data/challenges"
 
+
 Challenge.destroy_all
 
 p "Creating challenges..."
 challenges.each { |challenge| Challenge.create!(challenge) }
+p "Creating created"
+
+myUser = User.create(first_name:"pat", category_preference: "Crafting", length_preference: "6", email: "junior@email.com", password: "password")

@@ -1,0 +1,26 @@
+.banner {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.border {
+  border-bottom-left-radius: 100px 100px;
+  border-bottom-right-radius: 100px 100px;
+  background-color: #FDEDAD;
+}
+
+.banner-challenge {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.banner-button {
+  min-height: 5vh;
+  min-width: 5vw;
+  border-radius: 30px;
+
+}
