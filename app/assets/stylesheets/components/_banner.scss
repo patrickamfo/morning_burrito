@@ -1,25 +1,8 @@
-.banner {
-  min-height: 50vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.border {
-  border-bottom-left-radius: 100px 100px;
-  border-bottom-right-radius: 100px 100px;
+.challenge-banner {
   background-color: #FDEDAD;
-}
-
-.banner-challenge {
-  min-height: 30vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.banner-button {
-  min-height: 5vh;
-  min-width: 5vw;
-  border-radius: 30px;
+  height: 30vh;
+  border-radius: 0 0 30px 30px;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
 }

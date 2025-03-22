@@ -1,0 +1,30 @@
+.p-button:hover {
+  background-color: #FAEEDA !important;
+}
+
+.form-update {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.form-update.visible {
+  opacity: 1;
+}
+
+.show-button, .preference-button {
+  color: black;
+  background-color: #D9D9D9;
+  border: 1px solid black;
+}
+
+.show-button:hover {
+  background-color: #D9D9D9;
+  border: 1px solid black;
+  transform: scale(1.1) perspective(1px);
+  transition: transform 0.5s ease;
+}
+
+.preference-button:hover {
+  background-color: #D9D9D9;
+  border: 1px solid black;
+}
