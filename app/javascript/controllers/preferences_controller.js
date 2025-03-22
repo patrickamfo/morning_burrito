@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="preferences"
 export default class extends Controller {
-  static targets = [ "length", "category", "lengthTick", "categoryTick", "update", "tagline" ];
+  static targets = [ "length", "category", "lengthTick", "categoryTick", "update", "tagline", "challengetag" ];
 
   showLengthButton() {
     this.lengthTickTarget.classList.add("visible");
