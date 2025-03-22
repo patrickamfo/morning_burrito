@@ -1,4 +1,10 @@
 class UserChallengesController < ApplicationController
+
+  def index
+    @completed_challenges = UserChallenge.where(user_id: current_user, status: "Completed")
+    @challenges = Challenge.all
+  end
+
   def new
     @challenge = Challenge.find(params[:challenge_id])
     @user_challenge = UserChallenge.new
