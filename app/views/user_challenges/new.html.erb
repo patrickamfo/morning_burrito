@@ -5,21 +5,43 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mt-3">
     <div class="col-12">
         <%= simple_form_for [@challenge, @user_challenge] do |f| %>
-        <div>
           <% if @challenge.category == "Creative Writing" %>
-            <%= f.input :challenge_text %>
-        </div>
+            <div id="square" data-controller="writing-text" data-writing-text-target="square">
+              <%= f.input :challenge_text,
+              input_html: {
+                id: "writing_text",
+                data: {
+                  writing_text_target: 'writingText',
+                  action:"change->writing-text#text"
+                }}, label: false, wrapper: false
+            %>
+            </div>
+
         <div class="icon">
           <% else @challenge.category == "Crafting" %>
+            <div id="circle" class="" data-controller="upload-photo" data-upload-photo-target="circle">
+              <%= f.input :photo, as: :file,
+                input_html: {
+                  id: 'photo_upload_input',
+                  data: {
+                    upload_photo_target: 'photoPicker',
+                    action:"change->upload-photo#upload"
+                }}, label: false
+              %>
 
-          <div id="circle" class="">
+            <label for="photo_upload_input">
+              <p> click me </p>
+
+            </label>
+
           </div>
 
-          <div data-controller="upload-photo">
-            <%= f.input :photo, as: :file, class: "icon", data: "upload-photo"%>
+          <%# <div>
+
+          </div> %>
         </div>
           <% end %>
     </div>
