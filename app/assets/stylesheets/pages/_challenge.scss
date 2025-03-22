@@ -3,12 +3,32 @@
 }
 
 .icon {
-  
+
 }
 
 #circle {
   background: #D9D9D9;
   border-radius: 50%;
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#square {
+  background: #D9D9D9;
+  width: 400px;
+  height: 400px;
+}
+
+
+#photo_upload_input{
+  display: none;
+}
+
+#writing_text {
+  height: 100%;
+  background: #D9D9D9;
+
 }
