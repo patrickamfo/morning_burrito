@@ -1,54 +1,22 @@
+<div class="challenge-banner">
+  <div class="text-center">
+    <h1>Your Creative Boost is Served</h1>
+
+    <div class="d-flex justify-content-center">
+      <div>
+        <%=@challenge.category  %>
+      </div>
+      <div>
+        progression
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
-  <div class="row border">
-    <div class="col-lg-12 banner align-items-center">
-      <h1>Your Creative Boost is Served</h1>
-    </div>
+  <%= render "shared/challenge_info" %>
 
-  <div class="row">
-      <div class= "col-lg-1">
-    </div>
-
-    <div class= "col-lg-3 bg-secondary banner-button align-items-center">
-      <%=@challenge.category  %>
-    </div>
-
-    <div class= "col-lg-1">
-    </div>
-
-    <div class= "col-lg-3 bg-secondary banner-button align-items-center">
-      progression
-    </div>
-
-    <div class= "col-lg-4">
-    </div>
-
-  </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-12">
-      <h2>We love a good</h2>
-      <h2><%=@challenge.name%></h2>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-12">
-      <h3>Description</h3>
-      <%=@challenge.description %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-12">
-      <p>Most favourited challenge this week</p>
-      <p>This challenge has been completed by your friend NAME</p>
-    </div>
-  </div>
-
-  <div class="row justify-content-center banner-button">
-    <div class="d-flex col-lg-2 banner-button">
-      <%= link_to "Time to Create!", new_challenge_user_challenge_path(@challenge), class: "btn btn-secondary rounded"%>
-    </div>
+  <div class="d-grid gap-2 col-6 mx-auto">
+    <%= link_to "Time to Create!", new_challenge_user_challenge_path(@challenge), class: "show-button btn btn-lg rounded-pill"%>
   </div>
 </div>
