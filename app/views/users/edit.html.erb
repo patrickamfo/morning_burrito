@@ -1,10 +1,10 @@
-<div class="container">
-  <div class="text-center my-3">
-    Welcome, <%= current_user.first_name %>
-    <h1>Goals</h1>
-    <h1><i class="fa-solid fa-bullseye"></i></h1>
+<div class="container preferences-body" data-controller="preferences">
+  <div class="text-center my-2">
+    <h1 data-preferences-target="tagline">Fit this challenge into your routine and set the right time for you!</h1>
+    <h1 class="challenge-tagline d-none d-sm-block">What's your vibe? Pick your challenge type!</h1>
   </div>
 
-  <%= render "shared/form_preferences", user: @user %>
-
+  <div>
+    <%= render "shared/form_preferences", user: @user %>
+  </div>
 </div>
