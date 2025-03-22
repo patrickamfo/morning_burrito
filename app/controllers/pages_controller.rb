@@ -6,13 +6,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @challenges = Challenge.all
-    @daily_options = @challenges.where.not(id: UserChallenge.where(user_id: current_user, status: "Completed")).sample(3)
-    @completed_challenges = UserChallenge.where(user_id: current_user, status: "Completed")
+    @last_2_challenges = UserChallenge.where(user_id: current_user, status: "Completed").last(2)
   end
 
-  def learning_journey
-    @challenges = Challenge.all
-    @daily_options = @challenges.where.not(id: UserChallenge.where(user_id: current_user, status: "Completed")).sample(3)
-    @completed_challenges = UserChallenge.where(user_id: current_user, status: "Completed")
-  end
 end

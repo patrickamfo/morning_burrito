@@ -1,8 +1,27 @@
-<div class="d-flex flex-column align-items-center">
-    <% @completed_challenges.each do |challenge| %>
-      <div class="card text-bg-primary my-3 rounded-5" style="width: 18rem;">
-        <div class="card-header"><%= @challenges.find(challenge.challenge_id).name %></div>
-        <div class="card-body"></div>
-      </div>
-    <% end %>
+<div class="container d-flex flex-column align-items-center">
+
+  <div class="preferences mt-5 text-center">
+    <h4 class="mb-3">Tailored for you!</h4>
+    <%= render "shared/preference_buttons" %>
   </div>
+
+  <div class="learning-track mt-5">
+    <h4 class="mb-3 text-center">Your learning track</h4>
+    <div class="d-flex flex-column align-items-center">
+      <% @last_2_challenges.each do |challenge| %>
+        <div class="card text-bg-primary my-3 rounded-5" style="width: 100%; height: 10rem;">
+          <div class="container py-2 d-flex flex-column justify-content-between" style="height: 100%;">
+            <div class="card-body"></div>
+            <div class="border border-black p-1 rounded-5">
+              <%= @challenges.find(challenge.challenge_id).name.titleize %>
+            </div>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+
+    <%= link_to "Review all past challenges...", "#"%>
+  </div>
+
+</div>
