@@ -1,26 +1,27 @@
-.banner {
-  min-height: 50vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+.challenge-banner {
+  background-color: #FDEDAD;
+  height: 30vh;
+  border-radius: 0 0 30px 30px;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
 }
 
 .border {
-  border-bottom-left-radius: 100px 100px;
-  border-bottom-right-radius: 100px 100px;
-  background-color: #FDEDAD;
+  // border-bottom-left-radius: 100px 100px;
+  // border-bottom-right-radius: 100px 100px;
+  // background-color: #FDEDAD;
 }
 
-.banner-challenge {
-  min-height: 40vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
+// .banner-challenge {
+//   min-height: 40vh;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-around;
+// }
 
-.banner-button {
-  min-height: 5vh;
-  min-width: 5vw;
-  border-radius: 30px;
-
-}
+// .banner-button {
+//   min-height: 5vh;
+//   min-width: 5vw;
+//   border-radius: 30px;
+// }
