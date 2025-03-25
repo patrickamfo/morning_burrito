@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'user_challenges/new'
-  get 'user_challenges/create'
-
   devise_for :users
   root to: "pages#home"
 
@@ -15,7 +12,7 @@ Rails.application.routes.draw do
   resources :user_challenges, only: [:index, :show]
 
   resources :challenges, only: [:show, :new, :edit] do
-    resources :user_challenges, only: [:new, :create]
+    resources :user_challenges, only: [:create]
   end
 
   resources :users do
