@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resources :user_challenges, only: [:create]
   end
 
+  get "completed_challenges/:id", to: "user_challenges#completed"
+
   resources :users do
     member do
       get "category-preference"

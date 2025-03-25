@@ -6,7 +6,7 @@ class UserChallengesController < ApplicationController
   end
 
   def completed
-    
+    @completed_challenge = UserChallenge.find(params[:id])
   end
 
   def show
