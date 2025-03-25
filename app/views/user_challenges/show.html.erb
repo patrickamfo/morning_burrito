@@ -1,37 +1,36 @@
-<div class="challenge-banner text-sm-center d-flex align-items-end">
-  <div class="ms-4">
-    <h1><strong><%= @completed_challenge.challenge.name %></strong></h1>
-    <p><i>Completed on: <%= @completed_challenge.completion_date.strftime("%A %e, %Y") %></i></p>
-
-    <div class="my-4">
-      <%= link_to current_user.category_preference, edit_user_path(current_user), class: "preference-button btn rounded-pill disabled" %>
-      <%= link_to "#{current_user.length_preference} mins" , edit_user_path(current_user), class: "preference-button btn rounded-pill disabled" %>
-    </div>
-  </div>
-</div>
-
-<div class="d-flex flex-row align-items-center">
-  <%= link_to dashboard_path, class: "mx-3 my-3 fs-4", title: "Back to dashboard", data: { turbo: false } do %>
-    <i class="fa-solid fa-arrow-left"></i>
-  <% end %>
-</div>
-
 <div class="container">
-  <div class="row">
-    <div class="col-12 col-xl-6 my-2">
-      <h4><strong>Here's what you did:</strong></h4>
-      <%=@completed_challenge.challenge.description %>
-    </div>
-
-    <div class="col-12 col-xl-6 my-4">
-      <h4><strong>What you created:</strong></h4>
+  <div class="row border">
+    <div class="col-12 banner-challenge align-items-center">
+      <h1>Let's see what you made</h1>
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-12">
+        <%= simple_form_for @user_challenge do |f| %>
+        <div>
+          <% if @challenge.category == "Creative Writing" %>
+            <%= f.input :challenge_text %>
+        </div>
+        <div class="icon">
+          <% else @challenge.category == "Crafting" %>
 
+          <div id="circle" class="">
+          </div>
 
-  <div class="my-5">
-    <p><i class="fa-regular fa-heart me-2"></i>Most favourited challenge this week</p>
-    <p><i class="fa-solid fa-fire-flame-curved me-2"></i>This challenge has been completed by your friend NAME</p>
+          <div data-controller="upload-photo">
+            <%= f.input :photo, as: :file, class: "icon", data: "upload-photo"%>
+        </div>
+          <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+          <% if @challenge.category == "Creative Writing" %>
+            <%= f.submit "Submit your creation", class: "btn btn-secondary" %>
+          <% else @challenge.category == "Crafting" %>
+            <%= f.submit "Let's see what you made", class: "btn btn-secondary" %>
+          <% end %>
+      <% end %>
   </div>
 </div>
