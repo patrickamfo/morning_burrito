@@ -1,5 +1,5 @@
 class Challenge < ApplicationRecord
-  has_many :user_challenges
+  has_many :user_challenges, dependent: :destroy
   has_many :users, through: :user_challenges
   validates :name, :description, :length, :category, presence: true
   validates :name, uniqueness: true
