@@ -5,21 +5,28 @@ class UserChallengesController < ApplicationController
     @challenges = Challenge.all
   end
 
-  def new
-    @challenge = Challenge.find(params[:challenge_id])
-    @user_challenge = UserChallenge.new
+  def completed
+    @completed_challenge = UserChallenge.find(params[:id])
+  end
+
+  def show
+    @user_challenge = UserChallenge.find(params[:id])
+    @challenge = @user_challenge.challenge
   end
 
   def create
-    @user_challenge = UserChallenge.create(user_challenge_params)
-    if UserChallenge.save
-      @user_challenge.user = current_user
-
+    @user_challenge = UserChallenge.new(challenge_id: params[:challenge_id], user_id: current_user.id, status: "In Progress")
+    @challenge = Challenge.find(params[:challenge_id])
+    if @user_challenge.save
+      redirect_to user_challenge_path(@user_challenge)
+    else
+      redirect_to challenge_path(@challenge), status: :unprocessable_entity
+    end
   end
 
-private
+  private
+
   def user_challenge_params
-    params.require(:challenge).permit(:name, :description, :length, :category)
+    params.require(:user_challenge).permit(:user_id, :challenge_id, :status, :challenge_text)
   end
-end
 end

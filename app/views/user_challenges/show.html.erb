@@ -7,7 +7,7 @@
 
   <div class="row">
     <div class="col-12">
-        <%= simple_form_for [@challenge, @user_challenge] do |f| %>
+        <%= simple_form_for @user_challenge do |f| %>
         <div>
           <% if @challenge.category == "Creative Writing" %>
             <%= f.input :challenge_text %>

@@ -2,16 +2,20 @@
   <div class="ms-4">
     <h1><strong>Your Creative Boost <br>is Served</strong></h1>
 
-    <div>
-      <%= render "shared/preference_buttons" %>
+    <div class="my-4">
+      <%= link_to current_user.category_preference, edit_user_path(current_user), class: "preference-button btn rounded-pill disabled" %>
+      <%= link_to "#{current_user.length_preference} mins" , edit_user_path(current_user), class: "preference-button btn rounded-pill disabled" %>
     </div>
   </div>
 </div>
 
 <div class="container">
-  <%= render "shared/challenge_info" %>
+  <%= render "challenges/challenge_info", challenge: @challenge %>
 
   <div class="d-grid gap-2 col-6 mx-auto my-4">
-    <%= link_to "Time to Create!", new_challenge_user_challenge_path(@challenge), class: "show-button btn btn-lg rounded-pill"%>
+    <%#= link_to "Time to Create!", new_challenge_user_challenge_path(@challenge), class: "show-button btn btn-lg rounded-pill"%>
+    <%= simple_form_for [@challenge, @user_challenge] do |f| %>
+      <%= f.submit %>
+    <% end %>
   </div>
 </div>
