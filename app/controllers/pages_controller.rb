@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
-  before_action :daily_random_challenge
+  before_action :daily_random_challenge, except: [:home]
 
   def home
   end
