@@ -5,6 +5,10 @@ class UserChallengesController < ApplicationController
     @challenges = Challenge.all
   end
 
+  def completed
+    
+  end
+
   def show
     @user_challenge = UserChallenge.find(params[:id])
     @challenge = @user_challenge.challenge
