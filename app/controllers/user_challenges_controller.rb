@@ -18,15 +18,31 @@ class UserChallengesController < ApplicationController
     @user_challenge = UserChallenge.new(challenge_id: params[:challenge_id], user_id: current_user.id, status: "In Progress")
     @challenge = Challenge.find(params[:challenge_id])
     if @user_challenge.save
-      redirect_to user_challenge_path(@user_challenge)
+      redirect_to edit_user_challenge_path(@user_challenge)
     else
-      redirect_to challenge_path(@challenge), status: :unprocessable_entity
+      redirect_to daily_challenge_path, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @user_challenge = UserChallenge.find(params[:id])
+    @challenge = @user_challenge.challenge
+  end
+
+  def update
+    @user_challenge = UserChallenge.find(params[:id])
+    if params[:user_challenge]
+      @user_challenge.update(status: "Completed", completion_date: Time.now)
+      redirect_to dashboard_path
+    else
+      @challenge = @user_challenge.challenge
+      render :edit, status: :unprocessable_entity
     end
   end
 
   private
 
   def user_challenge_params
-    params.require(:user_challenge).permit(:user_id, :challenge_id, :status, :challenge_text)
+    params.require(:user_challenge).permit(:id, :user_id, :challenge_id, :status, :challenge_text, :photo)
   end
 end

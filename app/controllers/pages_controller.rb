@@ -12,6 +12,7 @@ class PagesController < ApplicationController
 
   def daily_challenge
     @daily_challenge = daily_random_challenge
+    @user_challenge = UserChallenge.new
   end
 
   private
