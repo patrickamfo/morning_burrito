@@ -4,6 +4,11 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = [ "length", "category", "lengthTick", "categoryTick", "update", "tagline", "challengetag" ];
 
+
+  lengthTargetConnected(lengthTarget) {
+    lengthTarget.classList.add("visible");
+  }
+
   showLengthButton() {
     this.lengthTickTarget.classList.add("visible");
     this.taglineTarget.innerText = "Fit this challenge into your routine and set the right time for you!"
