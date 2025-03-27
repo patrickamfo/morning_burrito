@@ -39,7 +39,7 @@
 
     <div class="d-grid gap-2 col-6 mx-auto my-4">
       <%= simple_form_for [@daily_challenge, @user_challenge] do |f| %>
-        <%= f.submit %>
+        <%= f.submit, "Time to Create!", class: "show-button btn btn-lg rounded-pill" %>
       <% end %>
     </div>
   </div>
