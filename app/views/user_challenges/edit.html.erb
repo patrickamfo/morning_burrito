@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row border">
+    <div class="col-12 banner-challenge align-items-center">
+      <h1>Let's see what you made</h1>
+    </div>
+  </div>
+
+
+  <%= simple_form_for @user_challenge do |f| %>
+    <% if @challenge.category == "Creative Writing" %>
+      <div>
+        <%= f.input :challenge_text %>
+      </div>
+    <% elsif @challenge.category == "Crafting" %>
+      <div class="icon">
+        <div id="circle" class=""></div>
+        <div data-controller="upload-photo">
+          <%= f.input :photo, as: :file, required: true, class: "icon", data: "upload-photo"%>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @challenge.category == "Creative Writing" %>
+      <%= f.submit "Submit your creation", class: "btn btn-secondary" %>
+    <% else @challenge.category == "Crafting" %>
+      <%= f.submit "Let's see what you made", class: "btn btn-secondary" %>
+    <% end %>
+  <% end %>
+</div>

@@ -38,7 +38,9 @@
     </div>
 
     <div class="d-grid gap-2 col-6 mx-auto my-4">
-      <%= link_to "Time to Create!", new_challenge_user_challenge_path(@daily_challenge), class: "show-button btn btn-lg rounded-pill"%>
+      <%= simple_form_for [@daily_challenge, @user_challenge] do |f| %>
+        <%= f.submit %>
+      <% end %>
     </div>
   </div>
 
