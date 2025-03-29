@@ -1,49 +1,63 @@
-<% if @daily_challenge %>
+<% if current_user.length_preference == nil || current_user.category_preference == nil %>
   <div class="challenge-banner text-sm-center d-flex align-items-end">
     <div class="ms-4">
       <h1><strong>Your Creative Boost <br>is Served</strong></h1>
-
-      <div>
-        <div class="my-4">
-          <%= link_to current_user.category_preference, edit_user_path(current_user), class: "preference-button btn rounded-pill" %>
-          <%= link_to "#{current_user.length_preference} mins" , edit_user_path(current_user), class: "preference-button btn rounded-pill" %>
-        </div>
-      </div>
     </div>
   </div>
-
-  <div class="container">
+  <div class="container text-center">
     <div class="my-5">
       <h1>
         <strong>
-          We love a good<br>
-          <%=@daily_challenge.name%>
+          <%= link_to "Set Preferences", edit_user_path(current_user), class: "preference-button btn btn-lg rounded-pill" %>
         </strong>
       </h1>
     </div>
+  </div>
+<% else %>
+  <% if @daily_challenge %>
+    <div class="challenge-banner text-sm-center d-flex align-items-end">
+      <div class="ms-4">
+        <h1><strong>Your Creative Boost <br>is Served</strong></h1>
 
-    <div class="my-5">
-      <h4><strong>Description</strong></h4>
-      <%=@daily_challenge.description %>
+        <div>
+          <%= render "shared/preference_buttons" %>
+        </div>
+      </div>
     </div>
 
-    <div class="my-4">
-      <h5><strong>Spicy Push <i class="fa-solid fa-caret-down fa-xl mx-3"></i></strong></h5>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-    </div>
+    <div class="container">
+      <div class="my-5">
+        <h1>
+          <strong>
+            We love a good<br>
+            <%=@daily_challenge.name%>
+          </strong>
+        </h1>
+      </div>
 
-    <div class="my-5">
-      <p><i class="fa-regular fa-heart me-2"></i>Most favourited challenge this week</p>
-      <p><i class="fa-solid fa-fire-flame-curved me-2"></i>This challenge has been completed by your friend NAME</p>
-    </div>
+      <div class="my-5">
+        <h4><strong>Description</strong></h4>
+        <%=@daily_challenge.description %>
+      </div>
+
+      <div class="my-4">
+        <h5><strong>Spicy Push <i class="fa-solid fa-caret-down fa-xl mx-3"></i></strong></h5>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+      </div>
 
     <div class="d-grid gap-2 col-6 mx-auto my-4">
-      <%= simple_form_for [@daily_challenge, @user_challenge] do |f| %>
-        <%= f.submit, "Time to Create!", class: "show-button btn btn-lg rounded-pill" %>
+      <% if @unfinished %>
+        <%= link_to "Continue Challenge", edit_user_challenge_path(@unfinished),  class: "show-button btn btn-lg rounded-pill" %>
+      <% elsif @completed %>
+          <%= link_to "Challenge Completed", "#", class: "show-button btn btn-lg rounded-pill disabled" %>
+      <% else %>
+        <%= simple_form_for [@daily_challenge, @user_challenge] do |f| %>
+          <%= f.submit "Time to Create!", class: "show-button btn btn-lg rounded-pill" %>
+        <% end %>
       <% end %>
     </div>
-  </div>
 
-<% else %>
-  <p>No more challenges available for this category/time.</p>
+  <% else %>
+    <p>No more challenges available for this category/time.</p>
+  <% end %>
 <% end %>

@@ -1,8 +1,14 @@
 <div class="container d-flex flex-column align-items-center">
 
   <div class="preferences mt-5 text-center">
-    <h4 class="mb-3">Tailored for you!</h4>
-    <%= render "shared/preference_buttons" %>
+    <h4 class="mb-3">Your Preferences</h4>
+      <% if current_user.length_preference == nil || current_user.category_preference == nil %>
+        <div class="my-4">
+          <%= link_to "Set Preferences", edit_user_path(current_user), class: "preference-button btn rounded-pill" %>
+        </div>
+      <% else %>
+        <%= render "shared/preference_buttons" %>
+      <% end %>
   </div>
 
   <div class="learning-track mt-5">

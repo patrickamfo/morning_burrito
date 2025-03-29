@@ -20,7 +20,15 @@
   </p>
 
   <div class="d-grid gap-2 d-md-block my-4">
-    <%= link_to "Let's Create Together", edit_user_path(current_user), class: "btn btn-primary btn-lg rounded-pill" %>
+    <% if user_signed_in? %>
+      <% if current_user.length_preference == nil || current_user.category_preference == nil %>
+        <%= link_to "Set your challenge preferences", edit_user_path(current_user), class: "show-button btn btn-lg rounded-pill" %>
+      <% else %>
+        <%= link_to "Go to your Daily Challenge", daily_challenge_path, class: "show-button btn btn-lg rounded-pill" %>
+      <% end %>
+    <% else %>
+      <%= link_to "Get Started", new_user_registration_path, class: "btn show-button btn-lg rounded-pill" %>
+      <%= link_to "I already have an account", new_user_session_path, class: "show-button btn btn-lg rounded-pill" %>
+    <% end %>
   </div>
 </div>
- 

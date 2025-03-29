@@ -13,6 +13,8 @@ class PagesController < ApplicationController
   def daily_challenge
     @daily_challenge = daily_random_challenge
     @user_challenge = UserChallenge.new
+    @unfinished = UserChallenge.find_by(user: current_user, challenge: @daily_challenge, status: "In Progress")
+    @completed = UserChallenge.find_by(user: current_user, challenge: @daily_challenge, status: "Completed")
   end
 
   private
