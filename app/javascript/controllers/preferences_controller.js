@@ -10,7 +10,7 @@ export default class extends Controller {
   }
 
   showLengthButton() {
-    this.lengthTickTarget.classList.add("visible");
+    this.lengthTickTarget.classList.add("visible", "fa-fade");
     this.taglineTarget.innerText = "Fit this challenge into your routine and set the right time for you!"
   }
 
@@ -22,7 +22,7 @@ export default class extends Controller {
 
   categoryIntoView() {
     this.categoryTarget.scrollIntoView();
-    this.categoryTickTarget.classList.add("visible");
+    this.categoryTickTarget.classList.add("visible", "fa-fade");
   }
 
   toggleLengthText() {
