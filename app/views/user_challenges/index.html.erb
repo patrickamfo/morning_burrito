@@ -2,7 +2,7 @@
 
   <div class="d-flex flex-row align-items-center">
     <%= link_to dashboard_path, class: "mx-3 fs-4", title: "Back to dashboard", data: { turbo: false } do %>
-      <i class="fa-solid fa-arrow-left"></i>
+      <i class="arrow fa-solid fa-arrow-left fa-bounce text-dark"></i>
     <% end %>
   </div>
 
@@ -13,15 +13,16 @@
 
   <div class="d-flex flex-column align-items-center">
     <% @completed_challenges.each do |challenge| %>
-      <div class="card text-bg-primary my-3 rounded-5" style="width: 70%; height: 10rem;">
-        <div class="container py-2 d-flex flex-column justify-content-between" style="height: 100%;">
-          <div class="card-body"></div>
-          <div class="border border-black p-1 rounded-5">
-            <%= @challenges.find(challenge.challenge_id).name.titleize %>
+      <%= link_to "/completed_challenges/#{challenge.id}" do %>
+        <div class="card text-bg-primary my-3 rounded-5" style="width: 70vw; height: 10rem;">
+          <div class="container py-2 d-flex flex-column justify-content-between" style="height: 100%;">
+            <div class="card-body"></div>
+            <div class="border border-black p-1 rounded-5">
+              <%= @challenges.find(challenge.challenge_id).name.titleize %>
+            </div>
           </div>
         </div>
-
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>
