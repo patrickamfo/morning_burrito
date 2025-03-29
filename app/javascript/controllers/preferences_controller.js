@@ -4,9 +4,11 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = [ "length", "category", "lengthTick", "categoryTick", "update", "tagline", "challengetag" ];
 
-
   lengthTargetConnected(lengthTarget) {
-    lengthTarget.classList.add("visible");
+    lengthTarget.classList.remove("d-none")
+    setTimeout(() => {
+      (lengthTarget.classList.add("visible"))
+    }, 100);
   }
 
   showLengthButton() {
@@ -16,6 +18,7 @@ export default class extends Controller {
 
   loadCategory() {
     const category = this.categoryTarget;
+    category.classList.remove("d-none");
     category.classList.add("visible");
     category.scrollIntoView();
   }

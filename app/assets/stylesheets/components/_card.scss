@@ -14,11 +14,11 @@
 #length-preferences {
   opacity: 0;
   transition: opacity 1s;
+  &.visible {
+    opacity: 1;
+  }
 }
 
-#length-preferences.visible {
-  opacity: 1;
-}
 
 #category-preferences {
   opacity: 0;
