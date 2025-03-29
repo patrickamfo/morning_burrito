@@ -7,7 +7,17 @@
 
   .icon-tick.visible {
     opacity: 1;
+    cursor: pointer;
   }
+}
+
+#length-preferences {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+#length-preferences.visible {
+  opacity: 1;
 }
 
 #category-preferences {

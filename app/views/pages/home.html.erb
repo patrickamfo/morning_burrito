@@ -1,26 +1,26 @@
-
-<div class="text-center">
-<h1>Morning<br>
-Burrito
-</h1>
+<div class="container text-center">
+  <h1 class="my-4">
+    Morning<br>
+    Burrito
+  </h1>
 
   <div class="p-3"></div>
-  
-  <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to "#", class: "navbar-brand" do %>
       <%= image_tag "logo.png" %>
     <% end %>
 
-
   <div class="p-3"></div>
 
-<p>Lorem ipsum dolor sit amet
-Lorem ipsum dolor sit amet,<br>
- consectetur adipiscing elit, sed do <br>
- eiusmod tempor incididunt ut <br>
- labore et dolore magna aliqua.
-</p>
+  <p>
+    Lorem ipsum dolor sit amet
+    Lorem ipsum dolor sit amet,<br>
+    consectetur adipiscing elit, sed do <br>
+    eiusmod tempor incididunt ut <br>
+    labore et dolore magna aliqua.
+  </p>
 
-
-  <div class="p-3"></div>
-
-  <a class="btn btn-primary disabled" aria-disabled="true" role="button" data-bs-toggle="button">let's create together</a>
+  <div class="d-grid gap-2 d-md-block my-4">
+    <%= link_to "Let's Create Together", edit_user_path(current_user), class: "btn btn-primary btn-lg rounded-pill" %>
+  </div>
+</div>
+ 

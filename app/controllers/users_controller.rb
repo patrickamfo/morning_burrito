@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.update!(user_params)
     if user.save!
-      redirect_to root_path, notice: "Your preferences have been updated"
+      redirect_to daily_challenge_path, notice: "Your preferences have been updated"
     else
       render preferences_path, status: :unprocessable_entity, notice: "Failed to save your preferences"
     end

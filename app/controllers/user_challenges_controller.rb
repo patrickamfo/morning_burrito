@@ -5,26 +5,44 @@ class UserChallengesController < ApplicationController
     @challenges = Challenge.all
   end
 
-  def show
+  def completed
     @completed_challenge = UserChallenge.find(params[:id])
   end
-
-  def new
-    @challenge = Challenge.find(params[:challenge_id])
-    @user_challenge = UserChallenge.new
+  
+  def show
+    @user_challenge = UserChallenge.find(params[:id])
+    @challenge = @user_challenge.challenge
   end
 
   def create
-    @user_challenge = UserChallenge.create(user_challenge_params)
-    if UserChallenge.save
-      @user_challenge.user = current_user
+    @user_challenge = UserChallenge.new(challenge_id: params[:challenge_id], user_id: current_user.id, status: "In Progress")
+    @challenge = Challenge.find(params[:challenge_id])
+    if @user_challenge.save
+      redirect_to edit_user_challenge_path(@user_challenge)
+    else
+      redirect_to daily_challenge_path, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @user_challenge = UserChallenge.find(params[:id])
+    @challenge = @user_challenge.challenge
+  end
+
+  def update
+    @user_challenge = UserChallenge.find(params[:id])
+    if params[:user_challenge]
+      @user_challenge.update(status: "Completed", completion_date: Time.now)
+      redirect_to dashboard_path
+    else
+      @challenge = @user_challenge.challenge
+      render :edit, status: :unprocessable_entity
     end
   end
 
   private
 
   def user_challenge_params
-    params.require(:challenge).permit(:name, :description, :length, :category)
+    params.require(:user_challenge).permit(:id, :user_id, :challenge_id, :status, :challenge_text, :photo)
   end
-
 end
