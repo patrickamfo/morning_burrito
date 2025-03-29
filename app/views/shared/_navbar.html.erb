@@ -2,7 +2,7 @@
   <div class="container d-flex justify-content-between text-center">
     <% if user_signed_in? %>
       <div class="col-3" data-action="click->selector#selectLink">
-        <%= link_to '', root_path, class: "nav-link active fa-solid fa-house fa-2x mt-2",
+        <%= link_to '', root_path, class: "nav-link fa-solid fa-house fa-2x mt-2",
             data: {selector_target: :navLink} %>
       </div>
 
