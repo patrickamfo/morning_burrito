@@ -28,7 +28,7 @@
       <% if @completed_challenge.challenge_text %>
         <p><%= @completed_challenge.challenge_text %></p>
       <% elsif @completed_challenge.photo.attached? %>
-        <p>This will be a photo</p>
+        <%= cl_image_tag @completed_challenge.photo.key, height: 300, width: 400, crop: :fill %>
       <% else %>
         <p>Nothing to see here... yet</p>
       <% end %>
