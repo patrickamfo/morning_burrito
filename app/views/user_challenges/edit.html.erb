@@ -1,19 +1,37 @@
+<div class="col-12 smaller-banner d-flex flex-column justify-content-end py-3">
+  <div class="container">
+    <h1>Let's see what you made</h1>
+  </div>
+</div>
+
 <div class="container">
-  <div class="row border">
-    <div class="col-12 banner-challenge align-items-center">
-      <h1>Let's see what you made</h1>
+  <div class="my-3">
+    <h1>
+      <strong>
+        <%=@challenge.name%>
+      </strong>
+    </h1>
+
+    <div class="my-3">
+      <h4><strong>Description</strong></h4>
+      <%=@challenge.description %>
+    </div>
+
+    <div class="my-3">
+      <h5><strong>Spicy Push <i class="fa-solid fa-caret-down fa-xl mx-3"></i></strong></h5>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
     </div>
   </div>
 
 
   <%= simple_form_for @user_challenge do |f| %>
     <% if @challenge.category == "Creative Writing" %>
-      <div>
-        <%= f.input :challenge_text %>
+      <div class="my-3">
+        <%= f.input :challenge_text, label: "Submit your challenge here..." %>
       </div>
     <% elsif @challenge.category == "Crafting" %>
       <div data-controller="img-preview">
-          <%= image_tag "", data: { img_preview_target: "preview" }, class: "img-fluid rounded-3 my-5 px-5" %>
+          <%= image_tag "", data: { img_preview_target: "preview" }, class: "img-fluid rounded-3 my-3 px-5" %>
 
           <%= f.input :photo,
              as: :file,
@@ -24,7 +42,7 @@
     <% end %>
 
     <% if @challenge.category == "Creative Writing" %>
-      <%= f.submit "Submit your creation", class: "btn btn-secondary" %>
+      <%= f.submit "Submit challenge", class: "btn btn-secondary" %>
     <% else @challenge.category == "Crafting" %>
       <%= f.submit "Let's see what you made", class: "btn btn-secondary" %>
     <% end %>
