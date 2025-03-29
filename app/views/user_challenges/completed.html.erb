@@ -20,15 +20,20 @@
   <div class="row">
     <div class="col-12 col-xl-6 my-2">
       <h4><strong>Here's what you did:</strong></h4>
-      <%=@completed_challenge.challenge.description %>
+      <p><%= @completed_challenge.challenge.description %></p>
     </div>
 
     <div class="col-12 col-xl-6 my-4">
       <h4><strong>What you created:</strong></h4>
+      <% if @completed_challenge.challenge_text %>
+        <p><%= @completed_challenge.challenge_text %></p>
+      <% elsif @completed_challenge.photo.attached? %>
+        <p>This will be a photo</p>
+      <% else %>
+        <p>Nothing to see here... yet</p>
+      <% end %>
     </div>
   </div>
-
-
 
   <div class="my-5">
     <p><i class="fa-regular fa-heart me-2"></i>Most favourited challenge this week</p>

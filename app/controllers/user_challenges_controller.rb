@@ -8,11 +8,6 @@ class UserChallengesController < ApplicationController
   def completed
     @completed_challenge = UserChallenge.find(params[:id])
   end
-  
-  def show
-    @user_challenge = UserChallenge.find(params[:id])
-    @challenge = @user_challenge.challenge
-  end
 
   def create
     @user_challenge = UserChallenge.new(challenge_id: params[:challenge_id], user_id: current_user.id, status: "In Progress")
