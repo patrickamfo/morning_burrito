@@ -5,6 +5,10 @@ class UserChallengesController < ApplicationController
     @challenges = Challenge.all
   end
 
+  def show
+    @completed_challenge = UserChallenge.find(params[:id])
+  end
+
   def new
     @challenge = Challenge.find(params[:challenge_id])
     @user_challenge = UserChallenge.new
@@ -14,12 +18,13 @@ class UserChallengesController < ApplicationController
     @user_challenge = UserChallenge.create(user_challenge_params)
     if UserChallenge.save
       @user_challenge.user = current_user
-
+    end
   end
 
-private
+  private
+
   def user_challenge_params
     params.require(:challenge).permit(:name, :description, :length, :category)
   end
-end
+
 end
