@@ -1,6 +1,6 @@
 <%= bootstrap_form_for(@user) do |f| %>
   <div class="row">
-    <div class="col-sm-6" id="length-preferences" data-preferences-target="length">
+    <div class="col-sm-6 d-none" id="length-preferences" data-preferences-target="length">
       <div class="card my-2">
         <div class="card-body text-center">
           <h3 class="d-grid gap-4" data-action="click->preferences#showLengthButton">
@@ -41,8 +41,8 @@
       </div>
     </div>
 
-    <div class="col-sm-6" id="category-preferences" data-preferences-target="category">
-      <h1 class="d-sm-none">What's your vibe? Pick your challenge type!</h1>
+    <div class="col-sm-6 d-none" id="category-preferences" data-preferences-target="category">
+      <h1 class="d-sm-none mt-4">What's your vibe? Pick your challenge type!</h1>
       <div class="card my-2">
         <div class="card-body text-center">
           <h3 class="d-grid gap-4" data-action="click->preferences#categoryIntoView">
