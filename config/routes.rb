@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "/dashboard", to: "pages#dashboard"
   get "/daily-challenge", to: "pages#daily_challenge"
   resources :user_challenges, only: [:index, :show, :create, :edit, :update]
+  get "/user_challenges/:id/confirmation", to: "user_challenges#confirmation"
 
   resources :challenges, only: [:show, :new, :edit] do
     resources :user_challenges, only: [:create]

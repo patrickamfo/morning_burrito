@@ -28,11 +28,14 @@ class UserChallengesController < ApplicationController
     @user_challenge = UserChallenge.find(params[:id])
     if params[:user_challenge]
       @user_challenge.update(status: "Completed", completion_date: Time.now)
-      redirect_to dashboard_path
+      redirect_to "/user_challenges/#{@user_challenge.id}/confirmation"
     else
       @challenge = @user_challenge.challenge
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def confirmation
   end
 
   private
