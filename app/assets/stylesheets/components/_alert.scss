@@ -1,7 +1,8 @@
 .alert {
-  position: fixed;
+  position: static;
   bottom: 16px;
   right: 16px;
   z-index: 1000;
-  background-color: #FDEDAD
+  background-color: #fc9a3e;
+  color: white;
 }
