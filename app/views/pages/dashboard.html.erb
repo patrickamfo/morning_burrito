@@ -37,17 +37,17 @@
   <div data-controller="tab">
     <div class="d-flex">
       <div class="learning-track mt-5">
-        <h4 class="ms-3 mb-3">Your learning track</h4>
+        <h4 class="ms-3 mb-3" data-action="click->tab#loadLearningTrack">Your learning track</h4>
       </div>
       <div class="unfinished-track mt-5">
-        <h4 class="ms-3 mb-3">Dive back in</h4>
+        <h4 class="ms-3 mb-3" data-action="click->tab#loadUnfinished">Dive back in</h4>
       </div>
     </div>
     <div>
       <span data-tab-target="track">
         <%= render "your_learning_track" %>
       </span>
-      <span data-tab-target="unfinished">
+      <span class="d-none" data-tab-target="unfinished">
         <%= render "unfinished_challenges" %>
       </span>
     </div>
