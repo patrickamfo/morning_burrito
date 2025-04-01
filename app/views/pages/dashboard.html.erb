@@ -34,32 +34,26 @@
     <% end %>
   </div>
 
-  <div class="learning-track mt-5">
-    <h4 class="ms-3 mb-3">Your learning track</h4>
-    <div class="d-flex justify-content-around">
-      <% @last_2_challenges.each do |challenge| %>
-        <%= link_to "/completed_challenges/#{challenge.id}" do %>
-          <div class="card text-bg-primary my-3 rounded-5" style="width: 10rem; height: 10rem;">
-            <div class="container py-2 d-flex flex-column justify-content-between" style="height: 100%;">
-              <div class="card-body"></div>
-              <div class="border border-black p-1 rounded-5">
-                <% if challenge.challenge.category == 'Creative Lesson' %>
-                  <i class="fa-solid fa-circle-play text-dark"></i>
-                <% elsif challenge.challenge.category == 'Creative Writing' %>
-                  <i class="fa-solid fa-book-open text-dark"></i>
-                <% else %>
-                  <i class="fa-solid fa-paintbrush text-dark"></i>
-                <% end %>
-                <%= challenge.challenge.name.titleize %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+  <div data-controller="tab">
+    <div class="d-flex">
+      <div class="learning-track mt-5">
+        <h4 class="ms-3 mb-3">Your learning track</h4>
+      </div>
+      <div class="unfinished-track mt-5">
+        <h4 class="ms-3 mb-3">Dive back in</h4>
+      </div>
     </div>
-    <div class="text-center mt-5">
-      <%= link_to "Review all past challenges...", user_challenges_path, class: "show-button btn btn-lg rounded-pill" %>
+    <div>
+      <span data-tab-target="track">
+        <%= render "your_learning_track" %>
+      </span>
+      <span data-tab-target="unfinished">
+        <%= render "unfinished_challenges" %>
+      </span>
     </div>
   </div>
 
+  <div class="text-center">
+    <%= link_to "Review all past challenges...", user_challenges_path, class: "show-button btn btn-lg rounded-pill" %>
+  </div>
 </div>
