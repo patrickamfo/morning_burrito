@@ -1,0 +1,7 @@
+<% if @completed_challenge.challenge.category == 'Creative Lesson' %>
+  <i class="fa-solid fa-circle-play text-dark"></i>
+<% elsif @completed_challenge.challenge.category == 'Creative Writing' %>
+  <i class="fa-solid fa-book-open text-dark"></i>
+<% else %>
+  <i class="fa-solid fa-paintbrush text-dark"></i>
+<% end %>

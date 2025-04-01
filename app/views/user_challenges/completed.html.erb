@@ -1,11 +1,18 @@
 <div class="challenge-banner text-sm-center d-flex align-items-end">
   <div class="ms-4">
     <h1><strong><%= @completed_challenge.challenge.name %></strong></h1>
-    <p><i>Completed on: <%= @completed_challenge.completion_date.strftime("%A %e, %Y") %></i></p>
+    <p><i class="fa-solid fa-calendar-day"></i> <i>Completed on: <%= @completed_challenge.completion_date.strftime("%A %e, %Y") %></i></p>
 
     <div class="my-4">
-      <%= link_to current_user.category_preference, edit_user_path(current_user), class: "preference-button btn rounded-pill disabled" %>
-      <%= link_to "#{current_user.length_preference} mins" , edit_user_path(current_user), class: "preference-button btn rounded-pill disabled" %>
+      <button class="preference-button btn rounded-pill disabled">
+        <%= render "category_icons" %>
+        <%= @completed_challenge.challenge.category %>
+      </button>
+
+      <button class="preference-button btn rounded-pill disabled">
+        <i class="fa-solid fa-hourglass-half text-dark"></i>
+        <%= "#{@completed_challenge.challenge.length} minutes" %>
+      </button>
     </div>
   </div>
 </div>
@@ -19,24 +26,33 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-xl-6 my-2">
-      <h4><strong>Here's what you did:</strong></h4>
-      <p><%= @completed_challenge.challenge.description %></p>
+      <div class="row">
+        <div class="col-1">
+          <i class="fa-solid fa-clock-rotate-left fa-1x"></i>
+        </div>
+        <div class="col-11">
+          <h4><strong>Here's what you did:</strong></h4>
+          <p><%= @completed_challenge.challenge.description %></p>
+        </div>
+      </div>
     </div>
 
     <div class="col-12 col-xl-6 my-4">
-      <h4><strong>What you created:</strong></h4>
-      <% if @completed_challenge.challenge_text %>
-        <p><%= @completed_challenge.challenge_text %></p>
-      <% elsif @completed_challenge.photo.attached? %>
-        <p>This will be a photo</p>
-      <% else %>
-        <p>Nothing to see here... yet</p>
-      <% end %>
+      <div class="row">
+        <div class="col-1">
+          <%= render "category_icons" %>
+        </div>
+        <div class="col-11">
+          <h4><strong>What you created:</strong></h4>
+          <% if @completed_challenge.challenge_text %>
+            <p><%= @completed_challenge.challenge_text %></p>
+          <% elsif @completed_challenge.photo.attached? %>
+            <p>This will be a photo</p>
+          <% else %>
+            <p>Nothing to see here... yet</p>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div class="my-5">
-    <p><i class="fa-regular fa-heart me-2"></i>Most favourited challenge this week</p>
-    <p><i class="fa-solid fa-fire-flame-curved me-2"></i>This challenge has been completed by your friend NAME</p>
   </div>
 </div>
