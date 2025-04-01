@@ -27,6 +27,11 @@ class UserChallengesController < ApplicationController
   def update
     @user_challenge = UserChallenge.find(params[:id])
     if params[:user_challenge]
+      if params[:user_challenge][:photo].present?
+        @user_challenge.photo.attach(params[:user_challenge][:photo])
+      elsif params[:user_challenge][:challenge_text].present?
+        @user_challenge.update(challenge_text: params[:user_challenge][:challenge_text])
+      end
       @user_challenge.update(status: "Completed", completion_date: Time.now)
       redirect_to "/user_challenges/#{@user_challenge.id}/confirmation"
     else
