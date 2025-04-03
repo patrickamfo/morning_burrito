@@ -1,10 +1,11 @@
 <div class="col-12 smaller-banner d-flex flex-column justify-content-end py-3">
   <div class="container">
-    <h1>Let's see what you made</h1>
+    <h1>Submit Your Masterpiece!</h1>
   </div>
 </div>
 
 <div class="container">
+
   <div class="my-3">
     <h1>
       <strong>
@@ -12,39 +13,60 @@
       </strong>
     </h1>
 
-    <div class="my-3">
-      <h4><strong>Description</strong></h4>
-      <%=@challenge.description %>
+  <div class="accordion my-3" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <% if @challenge.category == "Creative Writing" %>
+            <p class="m-0"><i class="fa-solid fa-book-open text-dark"></i> Description</p>
+          <% elsif @challenge.category == "Crafting" %>
+            <p class="m-0"><i class="fa-solid fa-paintbrush text-dark"></i>  Description</p>
+          <% else %>
+            <p class="m-0"><i class="fa-solid fa-circle-play text-dark"></i>  Description</p>
+          <% end %>
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <%= @challenge.description %>
+        </div>
+      </div>
     </div>
-
-    <div class="my-3">
-      <h5><strong>Spicy Push <i class="fa-solid fa-caret-down fa-xl mx-3"></i></strong></h5>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <p class="m-0"><i class="fa-solid fa-pepper-hot"></i> Spicy Push</p>
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+      </div>
     </div>
   </div>
+  <div data-controller="img-preview">
 
+    <%= image_tag "", data: { img_preview_target: "preview" }, class: "img-fluid rounded-5 my-3 px-5" %>
 
-  <%= simple_form_for @user_challenge do |f| %>
-    <% if @challenge.category == "Creative Writing" %>
-      <div class="my-3">
-        <%= f.input :challenge_text, label: "Submit your challenge here..." %>
-      </div>
-    <% elsif @challenge.category == "Crafting" %>
-      <div data-controller="img-preview">
-          <%= image_tag "", data: { img_preview_target: "preview" }, class: "img-fluid rounded-3 my-3 px-5" %>
+    <%= simple_form_for @user_challenge do |f| %>
+      <% if @challenge.category == "Creative Writing" %>
+        <div class="my-3">
+          <%= f.input :challenge_text, label: "Submit your challenge here..." %>
+        </div>
+      <% elsif @challenge.category == "Crafting" %>
+        <%= f.input :photo,
+          as: :file,
+          required: true,
+          input_html: { data: { img_preview_target: "input", action: "change->img-preview#preview" } },
+          class: "icon"%>
+      <% end %>
 
-          <%= f.input :photo,
-             as: :file,
-            required: true,
-            input_html: { data: { img_preview_target: "input", action: "change->img-preview#preview" } },
-            class: "icon"%>
-      </div>
+      <% if @challenge.category == "Creative Writing" %>
+        <%= f.submit "Submit challenge", class: "show-button btn btn-lg rounded-pill" %>
+      <% else @challenge.category == "Crafting" %>
+        <%= f.submit "Let's see what you made", class: "show-button btn btn-lg rounded-pill" %>
+      <% end %>
     <% end %>
-
-    <% if @challenge.category == "Creative Writing" %>
-      <%= f.submit "Submit challenge", class: "btn btn-secondary" %>
-    <% else @challenge.category == "Crafting" %>
-      <%= f.submit "Let's see what you made", class: "btn btn-secondary" %>
-    <% end %>
-  <% end %>
+  </div>
 </div>

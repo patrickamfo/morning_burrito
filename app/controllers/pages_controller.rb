@@ -23,7 +23,13 @@ class PagesController < ApplicationController
     @user_challenges = Challenge.where(length: current_user.length_preference, category: current_user.category_preference)
 
     Rails.cache.fetch("daily_challenge_user_#{current_user.id}", expires_at: Time.current.end_of_day) do
-      @user_challenges.where.not(id: UserChallenge.where(user_id: current_user, status: "Completed")).sample
+      completed_challenges = UserChallenge.where(user_id: current_user, status: "Completed")
+      uncompleted_challenges = []
+      completed_challenges.each do |userchallenge|
+        uncompleted_challenges << @user_challenges.where.not(id: userchallenge.challenge.id )
+      end
+      uncompleted_challenges.flatten.uniq.sample
+
     end
   end
 
