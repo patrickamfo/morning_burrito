@@ -18,11 +18,11 @@
       <h2 class="accordion-header">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
           <% if @challenge.category == "Creative Writing" %>
-            <p><i class="fa-solid fa-book-open text-dark"></i> Description</p>
+            <p class="m-0"><i class="fa-solid fa-book-open text-dark"></i> Description</p>
           <% elsif @challenge.category == "Crafting" %>
-            <p><i class="fa-solid fa-paintbrush text-dark"></i>  Description</p>
+            <p class="m-0"><i class="fa-solid fa-paintbrush text-dark"></i>  Description</p>
           <% else %>
-            <p><i class="fa-solid fa-circle-play text-dark"></i>  Description</p>
+            <p class="m-0"><i class="fa-solid fa-circle-play text-dark"></i>  Description</p>
           <% end %>
         </button>
       </h2>
@@ -35,7 +35,7 @@
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          <p><i class="fa-solid fa-pepper-hot"></i> Spicy Push</p>
+          <p class="m-0"><i class="fa-solid fa-pepper-hot"></i> Spicy Push</p>
         </button>
       </h2>
       <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
