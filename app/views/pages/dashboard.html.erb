@@ -35,20 +35,29 @@
   </div>
 
   <div data-controller="tab">
-    <div class="d-flex">
-      <div class="learning-track mt-5">
-        <h4 class="ms-3 mb-3" data-action="click->tab#loadLearningTrack">Your learning track</h4>
+    <div class="d-flex text-center">
+      <div class="learning-track text-center mt-5">
+        <h4 class="ms-3 mb-3" data-tab-target="trackText" data-action="click->tab#loadLearningTrack">Your learning track</h4>
+        <div class="bar"></div>
       </div>
-      <div class="unfinished-track mt-5">
-        <h4 class="ms-3 mb-3" data-action="click->tab#loadUnfinished">Dive back in</h4>
+      <div class="unfinished-track text-center mt-5">
+        <h4 class="ms-3 mb-3" data-tab-target="unfinishedText" data-action="click->tab#loadUnfinished">Dive back in</h4>
       </div>
     </div>
     <div>
-      <span data-tab-target="track">
-        <%= render "your_learning_track" %>
+      <span class="track-cards" data-tab-target="track">
+        <% if @last_2_challenges %>
+          <%= render "your_learning_track" %>
+        <% else %>
+          <p>You have no completed challenges yet</p>
+        <% end %>
       </span>
-      <span class="d-none" data-tab-target="unfinished">
-        <%= render "unfinished_challenges" %>
+      <span class="unfinished-cards d-none" data-tab-target="unfinished">
+        <% if @unfinished_2_challenges %>
+          <%= render "unfinished_challenges" %>
+        <% else %>
+          <p>You haven't started a challenge yet</p>
+        <% end %>
       </span>
     </div>
   </div>
