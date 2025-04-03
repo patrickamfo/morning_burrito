@@ -8,6 +8,7 @@ class PagesController < ApplicationController
   def dashboard
     @challenges = Challenge.all
     @last_2_challenges = UserChallenge.where(user_id: current_user, status: "Completed").last(2)
+    @unfinished_2_challenges = UserChallenge.where(user_id: current_user, status: "In Progress").last(2)
   end
 
   def daily_challenge

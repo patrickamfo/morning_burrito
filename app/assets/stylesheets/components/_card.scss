@@ -19,12 +19,24 @@
   }
 }
 
-
 #category-preferences {
   opacity: 0;
   transition: opacity 1s;
+  &.visible {
+    opacity: 1;
+  }
 }
 
-#category-preferences.visible {
-  opacity: 1;
+.learning-track, .unfinished-track {
+  cursor: pointer;
+
+  .bar {
+    height: 5px;
+    width: 100px;
+    background-color: #fc9a3e;
+    border-radius: 10px;
+  }
+}
+
+.bar {
 }
